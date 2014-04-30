@@ -3,17 +3,9 @@ use ExtendUnit
 defmodule ExtendUnit.CaseTest do
   use ExtendUnit.Case
   defmodule Demo do
-    def foo do
-      "foo"
-    end
-
-    def foo(1, 2) do
-      "foo 1, 2"
-    end
-
-    def passed_through do
-      "unchanged"
-    end
+    def foo, do: "foo"
+    def foo(1, 2), do: "foo 1, 2"
+    def passed_through, do: "unchanged"
   end
 
   test "mocks using fn" do
