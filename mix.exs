@@ -5,6 +5,7 @@ defmodule ExtendUnit.Mixfile do
     [app: :extend_unit,
      version: "0.0.1",
      elixir: "~> 0.13.0",
+     elixirc_options: [debug_info: true],
      deps: deps]
   end
 
@@ -14,6 +15,6 @@ defmodule ExtendUnit.Mixfile do
   end
 
   defp deps do
-    [ {:meck, github: "eproxus/meck"} ]
+    [ {:meck, github: "extend-unit/meck"} ]
   end
 end
