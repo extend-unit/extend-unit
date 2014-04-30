@@ -111,7 +111,7 @@ defmodule ExtendUnit.Case do
         try do
           :meck_proc.stop(module)
           bytecode = ExtendUnit.get_object_code(module)
-          {:module, ^module} = :erlang.load_module(module, bytecode)
+          {:module, ^module} = :code.load_binary(module, '', bytecode)
         rescue
           value -> IO.puts "ExtendUnit teardown for #{inspect state.context} failed: #{value}"
         end
