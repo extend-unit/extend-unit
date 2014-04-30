@@ -50,8 +50,9 @@ defmodule ExtendUnit.Case do
     end
 
     module = Macro.expand(module, __CALLER__)
+    expect_args = [module, meck_expect_arg, meck_validation_arg]
     quote do
-      :ok = :gen_server.call(Process.get(ExtendUnit.Case.Worker), {:expect, unquote(module), unquote(meck_expect_arg), unquote(meck_validation_arg)})
+      :ok = :gen_server.call(Process.get(ExtendUnit.Case.Worker), {:expect, unquote_splicing(expect_args)})
     end
   end
 
