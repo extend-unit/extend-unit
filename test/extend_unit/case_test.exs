@@ -23,6 +23,11 @@ defmodule ExtendUnit.CaseTest do
     assert Demo.foo(1, 2) == "bar 1"
   end
 
+  test "cleans up when test dies" do
+    mock Demo.foo, fn -> "bar" end
+    :erlang.exit(self(), :kill)
+  end
+
   test "mocks using args" do
     assert Demo.foo == "foo"
     assert Demo.foo(1, 2) == "foo 1, 2"
